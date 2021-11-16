@@ -1,5 +1,7 @@
 category:{
 	name: string
+    itemId: [{_id: ObjectId}]
+
 }
 
 image: {
@@ -13,6 +15,7 @@ item: {
 	city: string,
 	isPopular: Boolean,
 	description: string,
+	categoryId: [{_id: ObjectId}],
 	imageId: [{_id: ObjectId}],
 	featureId: [{_id: ObjectId}],
 	activityId: [{_id: ObjectId}]
@@ -21,14 +24,16 @@ item: {
 feature: {
 	name: string,
 	qty: number,
-	imageUrl: string
+	imageUrl: string,
+	itemId: [{_id: ObjectId}]
 }
 
 activity: {
 	name: string,
 	type: string,
 	imageUrl: string,
-	isPopular: boolean
+	isPopular: boolean,
+	itemId: [{_id: ObjectId}]
 }
 
 booking:{
@@ -57,4 +62,5 @@ bank: {
 	nameBank: string,
 	nomorRekening: string,
 	name: string
+	imageUrl: string
 }
