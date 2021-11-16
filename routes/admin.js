@@ -5,6 +5,7 @@ router.get('/dashboard', adminController.viewDashboard);
 // endpoint category
 router.get('/category', adminController.viewCategory);
 router.post('/category', adminController.addCategory);
+router.put('/category', adminController.editCategory);
 router.get('/bank', adminController.viewBank);
 router.get('/item', adminController.viewItem);
 router.get('/booking', adminController.viewBooking);
