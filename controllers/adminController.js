@@ -165,6 +165,10 @@ module.exports = {
 
   viewItem: async (req, res) => {
     try {
+      const item = await Item.find()
+        .populate({ path: 'imageId', select: 'id imageUrl' })
+        .populate({ path: 'categoryId', select: 'id name' });
+      // console.log(item);
       const category = await Category.find();
       //console.log(category);
       const alertMessage = req.flash('alertMessage');
@@ -174,6 +178,7 @@ module.exports = {
         title: "Staycation | Item",
         category,
         alert,
+        item,
       });      
     } catch (error) {
       req.flash('alertMessage', `${error.message}`);
