@@ -16,5 +16,6 @@ router.delete('/bank/:id', adminController.deleteBank);
 // endpoint item
 router.get('/item', adminController.viewItem);
 router.get('/booking', adminController.viewBooking);
+router.post('/item', uploadMultiple, adminController.addItem);
 
 module.exports = router;
