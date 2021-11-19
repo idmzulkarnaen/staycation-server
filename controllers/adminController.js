@@ -627,4 +627,32 @@ module.exports = {
       res.redirect('/admin/booking');
     }
   },
+
+  actionConfirmation: async (req, res) => {
+    const { id } = req.params;
+    try {
+      const booking = await Booking.findOne({ _id: id });
+      booking.payments.status = 'Accept';
+      await booking.save();
+      req.flash('alertMessage', 'Success Confirmation Pembayaran');
+      req.flash('alertStatus', 'success');
+      res.redirect(`/admin/booking/${id}`);
+    } catch (error) {
+      res.redirect(`/admin/booking/${id}`);
+    }
+  },
+
+  actionReject: async (req, res) => {
+    const { id } = req.params;
+    try {
+      const booking = await Booking.findOne({ _id: id });
+      booking.payments.status = 'Reject';
+      await booking.save();
+      req.flash('alertMessage', 'Success Reject Pembayaran');
+      req.flash('alertStatus', 'success');
+      res.redirect(`/admin/booking/${id}`);
+    } catch (error) {
+      res.redirect(`/admin/booking/${id}`);
+    }
+  }
 }
