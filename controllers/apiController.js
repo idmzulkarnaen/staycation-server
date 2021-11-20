@@ -3,6 +3,8 @@ const Treasure = require('../models/Activity');
 const Treveler = require('../models/Booking');
 const Category = require('../models/Category');
 const Bank = require('../models/Bank');
+const Booking = require('../models/Booking');
+const Member = require('../models/Member');
 
 module.exports = {
     landingPage: async (req, res) => {
@@ -100,4 +102,42 @@ module.exports = {
           res.status(500).json({ message: "Internal server error" });
         }
     },
+
+    bookingPage: (req, res) => {
+        const {
+            idItem,
+            duration,
+            // price,
+            bookingStartDate,
+            bookingEndDate,
+            firstName,
+            lastName,
+            email,
+            phoneNumber,
+            accountHolder,
+            bankFrom,
+          } = req.body;
+
+        if (!req.file) {
+            return res.status(404).json({ message: "Image not found" });
+        }
+
+        console.log(idItem);
+        if (
+            idItem === undefined ||
+            duration === undefined ||
+            // price === undefined ||
+            bookingStartDate === undefined ||
+            bookingEndDate === undefined ||
+            firstName === undefined ||
+            lastName === undefined ||
+            email === undefined ||
+            phoneNumber === undefined ||
+            accountHolder === undefined ||
+            bankFrom === undefined) {
+            res.status(404).json({ message: "Lengkapi semua field" });
+        }
+
+        res.status(201).json({ message: "Success Booking" });
+    }
 }
